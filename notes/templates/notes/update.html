@@ -1,0 +1,42 @@
+{% extends "notes/base.html" %}
+{% load static%}
+{% block content %}
+
+
+
+    
+  <form  method= "post" class="card-gigante" action="/atualiza">
+    {% csrf_token %}
+    <input
+    class="edit-title"
+    type="text"
+    name="titulo"
+    value={{note.title}}
+  />
+
+    
+    <input type = "hidden" value={{note.id}} name = "id"></input>
+    
+    <div class="linha">
+
+
+
+      <input class="check" type= "hidden" escreve id = "delete" name = "modo" value="A"></input>
+
+    <button class="edit-button" type = "submit">
+      <img class="pencil-gigante" src="../../static/notes/img/pencil.png"/> 
+    </button>
+
+
+</div>
+    
+<div class="card-content">
+    <textarea
+    class="edit-content"
+    name="detalhes"
+    
+  >{{note.content}}</textarea>
+    
+  </div>
+</form>
+  {% endblock %}

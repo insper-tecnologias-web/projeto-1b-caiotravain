@@ -22,7 +22,7 @@
 
 
       <input class="check" type= "hidden" escreve id = "delete" name = "modo" value="A"></input>
-
+      
     <button class="edit-button" type = "submit">
       <img class="pencil-gigante" src="../../static/notes/img/pencil.png"/> 
     </button>
@@ -30,13 +30,14 @@
 
 </div>
     
-<div class="card-content">
+<div class="card-content2">
     <textarea
     class="edit-content"
     name="detalhes"
     
   >{{note.content}}</textarea>
     
+  <input class="edit-content2" type = "text" value={{note.tag}} '' name = "tag"></input>
   </div>
 </form>
   {% endblock %}

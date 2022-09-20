@@ -1,0 +1,26 @@
+{% extends "notes/base.html" %}
+{% load static%}
+{% block content %}
+<form  action="/">
+    <button>
+        Home
+    </button>
+  </form>
+{% for note in notes %}
+
+<form  action="/unica" method="post">    
+    {% csrf_token %}
+<button class = "card">
+  
+<p class="edit">
+  tag : {{note.tag}}
+ </p>
+ </div>
+
+<input type = "hidden" value={{note.tag}} name = "tag"></input>
+</form>
+{% endfor %}
+</ul>
+
+</button>
+{% endblock %}

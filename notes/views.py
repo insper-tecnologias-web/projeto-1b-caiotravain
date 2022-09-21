@@ -32,7 +32,7 @@ def index(request):
     else:
         all_notes = Note.objects.all()
         all_tags = Tag.objects.all()
-        
+        print(all_tags)
         all_notes = Note.objects.all()
        
     return render(request, 'notes/index.html', {'notes': all_notes})
@@ -50,8 +50,12 @@ def delete(request):
         if modo == "D":
             instance = Note.objects.get(id=id)
             instance.delete()
+            
             if len(T) <= 1:
-                T.delete()
+                t = T[0]
+                lista = t.note_set.all()
+            if len(lista)<1:
+                t.delete()
                 
         
         return redirect('index')

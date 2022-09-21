@@ -32,6 +32,10 @@ def index(request):
     else:
         all_notes = Note.objects.all()
         all_tags = Tag.objects.all()
+        for a in all_notes:
+            a.delete()
+        for n in all_tags:
+            n.delete()
         print(all_tags)
         all_notes = Note.objects.all()
        

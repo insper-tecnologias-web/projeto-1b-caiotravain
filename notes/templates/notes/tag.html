@@ -6,18 +6,18 @@
         Home
     </button>
   </form>
-{% for note in notes %}
+{% for tag in tags %}
 
 <form  action="/unica" method="post">    
     {% csrf_token %}
 <button class = "card">
   
 <p class="edit">
-  tag : {{note.tag}}
+  tag : {{tag}}
  </p>
  </div>
 
-<input type = "hidden" value={{note.tag}} name = "tag"></input>
+<input type = "hidden" value={{tag}} name = "tag"></input>
 </form>
 {% endfor %}
 </ul>

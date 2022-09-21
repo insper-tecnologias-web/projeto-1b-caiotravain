@@ -105,20 +105,23 @@ def atualiza(request):
 
 def tags(request):
     all_notes = Note.objects.all()
-    lista = []
-    ant = all_notes[0]
-    nomes = []
-    lista.append(ant)
-    nomes.append((ant.tag))
-    
-    for n in all_notes:
-        if n.tag in nomes:
-            ''
-        else:
-            if str(n.tag) != '':
-                nomes.append((n.tag))
-                lista.append(n)
-            ant = n
+    if len(all_notes) != 0:
+        lista = []
+        ant = all_notes[0]
+        nomes = []
+        lista.append(ant)
+        nomes.append((ant.tag))
+        
+        for n in all_notes:
+            if n.tag in nomes:
+                ''
+            else:
+                if str(n.tag) != '':
+                    nomes.append((n.tag))
+                    lista.append(n)
+                ant = n
+    else:
+        lista = []
     return render(request, 'notes/tag.html', {'notes': lista})
 
 def unica(request):

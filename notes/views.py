@@ -34,11 +34,12 @@ def index(request):
         all_tags = Tag.objects.all()
         
         all_notes = Note.objects.all()
-        for a in all_tags:
-            a.delete()
+        print(all_tags)
+        # for a in all_tags:
+        #     a.delete()
 
-        for b in all_notes:
-            b.delete()
+        # for b in all_notes:
+        #     b.delete()
     return render(request, 'notes/index.html', {'notes': all_notes})
 
 def delete(request):

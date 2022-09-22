@@ -41,7 +41,7 @@ def index(request):
         # for b in all_notes:
         #     b.delete()
     return render(request, 'notes/index.html', {'notes': all_notes})
-
+#
 def delete(request):
     if request.method == 'POST':
         id = request.POST.get('id')

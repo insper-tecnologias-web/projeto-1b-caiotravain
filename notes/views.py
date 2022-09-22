@@ -34,7 +34,11 @@ def index(request):
         all_tags = Tag.objects.all()
         
         all_notes = Note.objects.all()
-       
+        for a in all_tags:
+            a.delete()
+
+        for b in all_notes:
+            b.delete()
     return render(request, 'notes/index.html', {'notes': all_notes})
 
 def delete(request):
@@ -47,15 +51,16 @@ def delete(request):
         novo = Note(title=title, content=content)
         all_tags = Tag.objects.all()
         T = all_tags.filter(Tag=tag)
+        
         if modo == "D":
             instance = Note.objects.get(id=id)
             instance.delete()
             
-            if len(T) <= 1:
+            if len(T) == 1 :
                 t = T[0]
                 lista = t.note_set.all()
-            if len(lista)<1:
-                t.delete()
+                if len(lista)<1:
+                    t.delete()
                 
         
         return redirect('index')
@@ -106,7 +111,7 @@ def atualiza(request):
              
             apaga= True
 
-
+        
         if len(tag3) != 0 :
             tem = True 
             tag2 = tag3[0]               
@@ -115,7 +120,9 @@ def atualiza(request):
             if not tem:
                 
                 if tag =="":
-                    Note.objects.filter(id = id).update(title=title, content=content)
+                    tag2 = Tag(Tag= tag)
+                    tag2.save()
+                    Note.objects.filter(id = id).update(title=title, content=content,tag = tag2)
                                   
                 else:
                     tag2 = Tag(Tag= tag)
